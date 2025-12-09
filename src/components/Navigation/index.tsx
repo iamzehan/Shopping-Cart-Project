@@ -14,7 +14,7 @@ export default function Navigation() {
     )}>
       {/* PC Navs */}
       <li className="hidden lg:flex h-full *:flex *:items-center *:transition-colors *:duration-300">
-        <NavLinks />
+        <NavLinks setMenu={setMenu}/>
       </li>
       {/* Mobile Navs */}
       <li className="lg:hidden flex gap-2 w-full h-full *:flex *:items-center *:transition-colors *:duration-300">
@@ -35,7 +35,7 @@ export default function Navigation() {
               { "-translate-y-200 opacity-0": !show }
             )}
           >
-            <NavLinks />
+            <NavLinks setMenu={setMenu} />
           </div>
         </div>
       </li>
