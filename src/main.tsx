@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
+import Home from "./components/Home";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>Home Page</h1>, // Parent route with Outlet
+        element: <Home/>, // Parent route with Outlet
       },
       {
         path: "shop",
