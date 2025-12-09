@@ -25,7 +25,7 @@ export default function NavLinks({
     <>
       {pages.map((page) => (
         <Link
-          onClick={setMenu(false)}
+          onClick={()=>setMenu(false)}
           to={page.link}
           className={clsx(
             "text-xl px-4 h-full md:rounded-none hover:bg-orange-300",
