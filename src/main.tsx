@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Home from "./components/Home";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
       },
       {
         path: "shop",
-        element: <h1>Shop Page</h1>,
+        element: <Shop/>,
       },
       {
         path: "cart",
