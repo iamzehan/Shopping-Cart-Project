@@ -28,8 +28,8 @@ export default function NavLinks({
           onClick={()=>setMenu(false)}
           to={page.link}
           className={clsx(
-            "text-xl px-4 h-full md:rounded-none hover:bg-orange-300",
-            { "bg-orange-300": location.pathname === page.link }
+            "text-xl px-4 h-full text-white md:rounded-none hover:bg-orange-300",
+            { "bg-orange-300 font-bold": location.pathname === page.link }
           )}
         >
           {page.name}

@@ -9,7 +9,7 @@ export default function Navigation() {
     setMenu(!show);
   };
   return (
-    <ul className={clsx("w-full h-8 md:h-10 lg:bg-orange-500 flex items-center justify-end lg:border border-orange-500 transition-all ease-in-out duration-200", 
+    <ul className={clsx("w-full h-8 md:h-10 lg:bg-orange-500 flex items-center justify-end transition-all ease-in-out duration-200", 
         {"bg-orange-500":show}
     )}>
       {/* PC Navs */}
@@ -21,7 +21,7 @@ export default function Navigation() {
         <div className="flex flex-col w-full">
           <span
             onClick={handleMenu}
-            className="h-full w-full flex justify-end active:*:bg-gray-200/10 *:transition-all *:duration-300"
+            className="hamburger-menu h-full w-full flex justify-end active:*:bg-gray-200/10 *:transition-all *:duration-300"
           >
             <Icon show={show} />
           </span>
@@ -47,6 +47,6 @@ function Icon({ show }: { show: boolean }) {
   if (show) {
     return <CloseIcon fontSize="large" className="rounded" />;
   } else {
-    return <MenuIcon fontSize="large" className="rounded" />;
+    return <MenuIcon fontSize="large" className="rounded hamburger" />;
   }
 }
