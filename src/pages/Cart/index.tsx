@@ -1,22 +1,27 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import CartBody from "./CartBody";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { getLocalData, type CartProduct } from "../../utils/data";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import { useOutletContext } from "react-router-dom";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
+
+const CartBody = lazy(() => import("./CartBody"));
 type OutletCtx = {
   setItemsNumber: React.Dispatch<React.SetStateAction<number>>;
 };
 export default function Cart() {
   const { setItemsNumber } = useOutletContext<OutletCtx>();
   const [data, setData] = useState<CartProduct[] | null>(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const loadData = async () => {
-      const localData: string | null = await getLocalData();
+      const localData: string | null = getLocalData();
       const parsedData: CartProduct[] = localData
         ? JSON.parse(localData)
         : null;
       setData(parsedData);
+      setLoading(false);
     };
     loadData();
   }, []);
@@ -34,7 +39,13 @@ export default function Cart() {
       localStorage.setItem("cartItems", JSON.stringify(newData));
     }
   }
-
+  if (loading) {
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress />
+      </Box>
+    );
+  }
   if (!data || data.length === 0) {
     return (
       <div className="flex flex-col h-[80vh] justify-center items-center gap-2 text-gray-400 w-full dark:text-gray-400/50">
@@ -43,6 +54,7 @@ export default function Cart() {
       </div>
     );
   }
+
   return (
     <div className="flex flex-col gap-5 items-center">
       <p className="text-3xl flex font-bold items-center gap-2">
@@ -58,14 +70,27 @@ export default function Cart() {
             <th>Quantity</th>
           </tr>
           {data?.map((product) => (
-            <CartBody
-              key={product.id}
-              data={product}
-              handleDelete={handleDelete}
-            />
+            <Suspense fallback={<SkeletonLoad />}>
+              <CartBody
+                key={product.id}
+                data={product}
+                handleDelete={handleDelete}
+              />
+            </Suspense>
           ))}
         </table>
       </div>
     </div>
+  );
+}
+
+function SkeletonLoad() {
+  return (
+    <tr className="text-center text-2xl *:h-20">
+      <td className="w-[80%] bg-gray-500/20 rounded p-5 animate-pulse"></td>
+      <td className="bg-gray-500/20 rounded p-5 animate-pulse"></td>
+      <td className="bg-gray-500/20 rounded p-5 animate-pulse"></td>
+      <td className="bg-gray-500/20 rounded p-5 animate-pulse"></td>
+    </tr>
   );
 }
