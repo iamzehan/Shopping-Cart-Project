@@ -6,7 +6,7 @@ import { useOutletContext } from "react-router-dom";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 
-const CartBody = lazy(() => import("./CartBody"));
+const CartItem = lazy(() => import("./CartItem"));
 type OutletCtx = {
   setItemsNumber: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -71,7 +71,7 @@ export default function Cart() {
           </tr>
           {data?.map((product) => (
             <Suspense fallback={<SkeletonLoad />}>
-              <CartBody
+              <CartItem
                 key={product.id}
                 data={product}
                 handleDelete={handleDelete}
