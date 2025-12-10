@@ -1,9 +1,14 @@
-import { type Product } from "../../utils/data";
+import { addToCart, type Product, type CartProduct } from "../../utils/data";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ReviewsIcon from '@mui/icons-material/Reviews';
 
 export default function Card({ product }: { product: Product }) {
+  function handleAddToCart(){
+    const newData:CartProduct = {...product, quantity:0};
+    newData["quantity"] = 1;
+    addToCart(newData)
+  }
   return (
     <>
       <div className="rounded shadow-sm border border-gray-300/90 dark:bg-[#0d1117] dark:border-orange-500 flex flex-col justify-between items-center gap-2 md:p-5">
@@ -28,7 +33,9 @@ export default function Card({ product }: { product: Product }) {
           </p>
           <span className="flex items-center gap-2 text-gray-500 dark:text-gray-300/20 w-full text-sm!"><ReviewsIcon/> {product.rating.count}</span>
         </div>
-        <button className="border w-fit md:w-full px-5 mb-2 md:mb-0 border-orange-500 py-2 rounded bg-orange-500 text-white flex justify-center gap-2 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-orange-500">
+        <button
+         onClick={handleAddToCart}
+         className="border w-fit md:w-full px-5 mb-2 md:mb-0 border-orange-500 py-2 rounded bg-orange-500 text-white flex justify-center gap-2 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-orange-500">
           Add to cart <AddShoppingCartIcon className="animate-pulse" />
         </button>
       </div>

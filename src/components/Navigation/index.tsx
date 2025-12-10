@@ -17,7 +17,7 @@ export default function Navigation() {
         <NavLinks setMenu={setMenu}/>
       </li>
       {/* Mobile Navs */}
-      <li className="lg:hidden flex gap-2 w-full h-full *:flex *:items-center *:transition-colors *:duration-300">
+      <li className="lg:hidden flex gap-2 w-full h-full *:flex *:items-center *:transition-colors *:duration-300 ">
         <div className="flex flex-col w-full">
           <span
             onClick={handleMenu}
