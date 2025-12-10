@@ -4,6 +4,8 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { getData, getLength, type Product } from "../../utils/data";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { useOutletContext } from "react-router-dom";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 type OutletCtx = {
   setItemsNumber: React.Dispatch<React.SetStateAction<number>>;
@@ -12,21 +14,28 @@ type OutletCtx = {
 const Card = lazy(() => import("../../components/Card"));
 export default function Shop() {
   usePageTitle("Shop");
-  const {setItemsNumber} = useOutletContext<OutletCtx>();
-
+  const { setItemsNumber } = useOutletContext<OutletCtx>();
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Product[] | null>(null);
   useEffect(() => {
     const loadData = async () => {
       const jsonData = await getData(1, 10);
       setData(jsonData);
+      setLoading(false);
     };
     loadData();
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     setItemsNumber(getLength());
-  })
-
+  });
+  if (loading) {
+    return (
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress color="inherit" />
+      </Box>
+    );
+  }
   return (
     <div className="flex flex-col gap-5">
       <p className="flex gap-2 text-3xl items-center justify-center">
@@ -46,7 +55,11 @@ export default function Shop() {
                   </div>
                 }
               >
-                <Card key={product.id} product={product} setItemsNumber={setItemsNumber} />
+                <Card
+                  key={product.id}
+                  product={product}
+                  setItemsNumber={setItemsNumber}
+                />
               </Suspense>
             );
           })}

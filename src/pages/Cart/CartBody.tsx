@@ -9,7 +9,7 @@ export default function CartBody({
   handleDelete(id: number): void;
 }) {
   return (
-    <tr className="bg-[whitesmoke] dark:bg-[#0d1117] text-center align-middle h-20">
+    <tr className="bg-[whitesmoke] dark:bg-[#242424] text-center align-middle h-20">
       <td className="font-semibold text-sm md:text-xl text-left p-3">
         {data.title}
       </td>

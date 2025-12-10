@@ -42,7 +42,7 @@ export default function Cart() {
   if (loading) {
     return (
       <Box sx={{ width: "100%" }}>
-        <LinearProgress />
+        <LinearProgress color="inherit" />
       </Box>
     );
   }
@@ -56,14 +56,14 @@ export default function Cart() {
   }
 
   return (
-    <div className="flex flex-col gap-5 items-center">
+    <div className="md:mt-10 flex flex-col gap-5 items-center">
       <p className="text-3xl flex font-bold items-center gap-2">
         Cart
         <ShoppingCartIcon fontSize="large" />
       </p>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col items-center w-full">
         {" "}
-        <table className="*:not-first:border-b">
+        <table className="*:not-first:border-b lg:w-[60%]">
           <tr className="text-center h-10">
             <th>Product</th>
             <th>Price</th>
@@ -87,10 +87,18 @@ export default function Cart() {
 function SkeletonLoad() {
   return (
     <tr className="text-center text-2xl *:h-20">
-      <td className="w-[80%] bg-gray-500/20 rounded p-5 animate-pulse"></td>
-      <td className="bg-gray-500/20 rounded p-5 animate-pulse"></td>
-      <td className="bg-gray-500/20 rounded p-5 animate-pulse"></td>
-      <td className="bg-gray-500/20 rounded p-5 animate-pulse"></td>
+      <td className="p-5 w-[80%] bg-gray-500/20 animate-pulse">
+        <div className="rounded empty:h-5 bg-gray-500/50 empty:w-full empty:md:w-[50%] p-2"></div>
+      </td>
+      <td className="bg-gray-500/20 animate-pulse">
+        <div className="rounded empty:h-5 bg-gray-500/50 empty:w-[90%] p-2"></div>
+      </td>
+      <td className="bg-gray-500/20 animate-pulse align-middle">
+        <div className="rounded empty:h-5 bg-gray-500/50 ml-3 empty:w-[20%] p-2"></div>
+      </td>
+      <td className="bg-gray-500/20 animate-pulse">
+        <div className="rounded empty:h-5 bg-gray-500/50 mr-2 empty:w-[50%] p-2"></div>
+      </td>
     </tr>
   );
 }
