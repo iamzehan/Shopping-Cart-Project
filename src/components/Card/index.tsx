@@ -1,13 +1,15 @@
-import { addToCart, type Product, type CartProduct } from "../../utils/data";
+import { addToCart, getLength, type Product, type CartProduct } from "../../utils/data";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ReviewsIcon from '@mui/icons-material/Reviews';
 
-export default function Card({ product }: { product: Product }) {
+export default function Card({ product, setItemsNumber }: { product: Product, setItemsNumber(length:number):void }) {
+
   function handleAddToCart(){
     const newData:CartProduct = {...product, quantity:0};
     newData["quantity"] = 1;
-    addToCart(newData)
+    addToCart(newData);
+    setItemsNumber(getLength());
   }
   return (
     <>

@@ -40,7 +40,14 @@ export function setLocalData(prevData:CartProduct[], newData:CartProduct){
   const latestData = [...prevData]
   localStorage.setItem("cartItems", JSON.stringify(latestData));
 }
-export async function addToCart(data:CartProduct){
+export  function addToCart(data:CartProduct){
   const localData:string|null = getLocalData();
   if (localData) setLocalData(JSON.parse(localData), data);
+}
+
+export function getLength(){
+  const data = localStorage.getItem("cartItems");
+  if (data){
+    return JSON.parse(data).length
+  }
 }

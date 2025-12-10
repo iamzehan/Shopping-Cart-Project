@@ -3,8 +3,12 @@ import CartBody from "./CartBody";
 import { useEffect, useState } from "react";
 import { getLocalData, type CartProduct } from "../../utils/data";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
-
+import { useOutletContext } from "react-router-dom";
+type OutletCtx = {
+  setItemsNumber: React.Dispatch<React.SetStateAction<number>>;
+};
 export default function Cart() {
+  const { setItemsNumber } = useOutletContext<OutletCtx>();
   const [data, setData] = useState<CartProduct[] | null>(null);
   useEffect(() => {
     const loadData = async () => {
@@ -17,6 +21,11 @@ export default function Cart() {
     loadData();
   }, []);
 
+  useEffect(() => {
+    if (!data) return;
+    setItemsNumber(data.length);
+  }, [data, setItemsNumber]);
+
   function handleDelete(id: number) {
     const newData = data?.filter((product) => product.id !== id);
 
@@ -26,7 +35,7 @@ export default function Cart() {
     }
   }
 
-  if (!data || data.length===0) {
+  if (!data || data.length === 0) {
     return (
       <div className="flex flex-col h-[80vh] justify-center items-center gap-2 text-gray-400 w-full dark:text-gray-400/50">
         <p className="text-4xl">Cart is empty</p>
