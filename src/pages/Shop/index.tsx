@@ -1,7 +1,7 @@
 import usePageTitle from "../../utils/page-title";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useState, useEffect, lazy, Suspense } from "react";
-import { getData, type Product } from "../../utils/data";
+import { getData, getLength, type Product } from "../../utils/data";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { useOutletContext } from "react-router-dom";
 
@@ -22,6 +22,10 @@ export default function Shop() {
     };
     loadData();
   }, []);
+
+  useEffect(()=> {
+    setItemsNumber(getLength());
+  })
 
   return (
     <div className="flex flex-col gap-5">
