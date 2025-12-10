@@ -16,7 +16,7 @@ export default function Shop() {
     loadData();
   }, []);
   return (
-    <div className="flex flex-col gap-5 w-screen">
+    <div className="flex flex-col gap-5">
       <p className="flex gap-2 text-3xl items-center justify-center">Shop <LocalMallIcon fontSize="large" /></p>
       <div className="mt-10 grid gap-2 px-5 grid-cols-2
             md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
