@@ -2,7 +2,8 @@ import { type CartProduct } from "../../utils/data";
 import { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { getLocalData } from "../../utils/data";
-
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 export default function CartItem({
   data,
   handleDelete,
@@ -45,32 +46,34 @@ export default function CartItem({
       <td>
         <div className="flex justify-center">
           <button
-            className="bg-red-400 border-red-400 text-white font-bold rounded-l-full border py-px px-2"
+            className="bg-red-400 border-red-400 shadow text-white font-bold rounded-l border"
             onClick={dereaseQuantity}
           >
-            -
+            <RemoveIcon/>
           </button>
 
           <input
-            className="border text-center rounded w-[20%]"
+            className="text-center w-[20%] border border-white shadow bg-white dark:border-black dark:bg-black"
             type="text"
             value={quantity}
             readOnly   
           />
 
           <button
-            className="bg-green-400 border border-green-400 text-white font-bold rounded-r-full py-px px-2"
+            className="bg-green-400 border border-green-400 shadow text-white font-bold rounded-r"
             onClick={increaseQuantity}
           >
-            +
+            <AddIcon/>
           </button>
         </div>
       </td>
 
-      <td>
+      <td className="px-5">
+        <div className="">
         <button onClick={() => handleDelete(data.id)}>
           <DeleteIcon className="text-red-500!" />
         </button>
+        </div>
       </td>
     </tr>
   );

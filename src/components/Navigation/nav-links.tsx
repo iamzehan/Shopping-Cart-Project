@@ -29,8 +29,8 @@ export default function NavLinks({
           onClick={()=>setMenu(false)}
           to={page.link}
           className={clsx(
-            "text-xl flex gap-2 items-center justify-center px-4 h-full text-white md:rounded-none hover:bg-orange-300",
-            { "bg-orange-300 font-bold": location.pathname === page.link }
+            "text-xl flex gap-2 items-center justify-center px-4 h-15 xl:h-full text-white md:rounded-none hover:bg-blue-300",
+            { "bg-blue-300 font-bold": location.pathname === page.link }
           )}
         >
           {page.name}

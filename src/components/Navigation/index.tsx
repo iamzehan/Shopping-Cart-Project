@@ -11,8 +11,8 @@ export default function Navigation({ itemsNum }: { itemsNum: number }) {
   return (
     <ul
       className={clsx(
-        "w-full h-8 md:h-10 lg:bg-orange-500 flex items-center justify-end transition-all ease-in-out duration-200",
-        { "bg-orange-500": show }
+        "w-full h-8 md:h-10 lg:bg-blue-500 flex items-center justify-end transition-all ease-in-out duration-200",
+        { "bg-blue-500": show }
       )}
     >
       {/* PC Navs */}
@@ -30,11 +30,11 @@ export default function Navigation({ itemsNum }: { itemsNum: number }) {
           </span>
           <div
             className={clsx(
-              "z-500  border-orange-500 bg-orange-500 flex flex-col w-screen text-center rounded-b border-3 transition-all ease-in-out duration-300",
+              "z-500 border-blue-500 bg-blue-500 flex flex-col w-screen text-center rounded-b border-3 transition-all ease-in-out duration-300",
               {
-                "origin-top opacity-100 translate-y-0": show,
+                "origin-top opacity-100 scale-y-100 translate-y-0": show,
               },
-              { "-translate-y-200 opacity-0": !show }
+              { "-translate-y-200 scale-y-50 opacity-0": !show }
             )}
           >
             <NavLinks setMenu={setMenu} itemsNum={itemsNum} />
@@ -51,7 +51,7 @@ function Icon({ show, itemsNum }: { show: boolean; itemsNum: number }) {
   } else {
     return (
       <div className="flex flex-col">
-        <MenuIcon fontSize="large" className="rounded hamburger relative" />
+        <MenuIcon fontSize="large" className="rounded text-blue-500 hamburger relative" />
         {itemsNum ?(
           <div className="absolute top-5 right-0 rounded-full flex items-center justify-center bg-red-500/60 h-5 aspect-square text-sm font-normal">
             {itemsNum}

@@ -38,7 +38,7 @@ export default function Shop() {
   }
   return (
     <div className="flex flex-col gap-5">
-      <p className="flex gap-2 text-3xl items-center justify-center">
+      <p className="flex gap-2 text-3xl items-center justify-center lg:mt-10">
         Shop <LocalMallIcon fontSize="large" />
       </p>
       <div

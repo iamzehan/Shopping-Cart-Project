@@ -13,7 +13,7 @@ export default function Card({ product, setItemsNumber }: { product: Product, se
   }
   return (
     <>
-      <div className="rounded shadow-sm border border-gray-300/90 dark:bg-[#0d1117] dark:border-orange-500 flex flex-col justify-between items-center gap-2 md:p-5">
+      <div className="rounded shadow-sm border border-gray-300/90 dark:bg-[#0d1117] dark:border-blue-500 flex flex-col justify-between items-center gap-2 md:p-5">
         <p className="p-2 text-wrap font-bold md:text-xl">{product.title}</p>
         <div className="flex gap-2 md:w-full justify-between">
           <p className="text-blue-400 rounded text-sm md:text-base text-center p-2">
@@ -37,7 +37,7 @@ export default function Card({ product, setItemsNumber }: { product: Product, se
         </div>
         <button
          onClick={handleAddToCart}
-         className="border w-fit md:w-full px-5 mb-2 md:mb-0 border-orange-500 py-2 rounded bg-orange-500 text-white flex justify-center gap-2 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-orange-500">
+         className="border w-fit md:w-full px-5 mb-2 md:mb-0 border-blue-500 py-2 rounded bg-blue-500 text-white flex justify-center gap-2 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-blue-500">
           Add to cart <AddShoppingCartIcon className="animate-pulse" />
         </button>
       </div>
