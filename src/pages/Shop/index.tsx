@@ -1,7 +1,7 @@
 import usePageTitle from "../../utils/page-title";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useState, useEffect, lazy, Suspense } from "react";
-import { getData, getLength, type Product } from "../../utils/data";
+import { getData, type Product } from "../../utils/data";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { useOutletContext } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -26,9 +26,7 @@ export default function Shop() {
     loadData();
   }, []);
 
-  useEffect(() => {
-    setItemsNumber(getLength());
-  });
+  
   if (loading) {
     return (
       <Box sx={{ width: "100%" }}>
