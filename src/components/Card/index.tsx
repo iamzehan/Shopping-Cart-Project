@@ -37,8 +37,8 @@ export default function Card({ product, setItemsNumber }: { product: Product, se
         </div>
         <button
          onClick={handleAddToCart}
-         className="border w-fit md:w-full px-5 mb-2 md:mb-0 border-blue-500 py-2 rounded bg-blue-500 text-white flex justify-center gap-2 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-blue-500">
-          Add to cart <AddShoppingCartIcon className="animate-pulse" />
+         className="border w-fit md:w-full text-sm md:text-lg px-5 m-2 md:mb-0 border-blue-500 py-2 rounded bg-blue-500 text-white flex justify-center items-center gap-2 transition-all ease-in-out duration-300 hover:bg-transparent hover:text-blue-500">
+          Add to cart <AddShoppingCartIcon className="text-sm! md:text-lg! animate-pulse" />
         </button>
       </div>
     </>
