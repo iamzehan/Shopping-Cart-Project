@@ -1,7 +1,7 @@
-import { type CartProduct } from "../../utils/data";
+import { type CartProduct } from "../utils/data";
 import { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { getLocalData } from "../../utils/data";
+import { getLocalData } from "../utils/data";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 export default function CartItem({

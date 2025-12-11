@@ -11,12 +11,12 @@ export default function Navigation({ itemsNum }: { itemsNum: number }) {
   return (
     <ul
       className={clsx(
-        "w-full h-8 md:h-10 lg:bg-blue-500 flex items-center justify-end transition-all ease-in-out duration-200",
+        "w-full h-8 xl:h-20 flex items-center justify-end shadow dark:shadow-amber-50/5 transition-all ease-in-out duration-200",
         { "bg-blue-500": show }
       )}
     >
       {/* PC Navs */}
-      <li className="hidden lg:flex h-full *:flex *:items-center *:transition-colors *:duration-300">
+      <li className="hidden lg:flex items-center gap-5 h-full *:flex *:items-center *:transition-colors *:duration-300">
         <NavLinks setMenu={setMenu} itemsNum={itemsNum} />
       </li>
       {/* Mobile Navs */}

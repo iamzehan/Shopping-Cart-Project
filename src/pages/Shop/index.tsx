@@ -32,13 +32,13 @@ export default function Shop() {
   if (loading) {
     return (
       <Box sx={{ width: "100%" }}>
-        <LinearProgress color="inherit" />
+        <LinearProgress color="primary" />
       </Box>
     );
   }
   return (
     <div className="flex flex-col gap-5">
-      <p className="flex gap-2 text-3xl items-center justify-center lg:mt-10">
+      <p className="flex gap-2 text-3xl items-center justify-center mt-10">
         Shop <LocalMallIcon fontSize="large" />
       </p>
       <div
@@ -50,8 +50,8 @@ export default function Shop() {
             return (
               <Suspense
                 fallback={
-                  <div className="flex justify-center items-center h-[300px] border border-orange-500 rounded animate-pulse">
-                    <CircularProgress size="15px" />
+                  <div className="flex justify-center items-center h-[300px] border border-gray-500 rounded animate-pulse">
+                    <CircularProgress size="35px" color="inherit"/>
                   </div>
                 }
               >

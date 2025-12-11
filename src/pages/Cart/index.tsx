@@ -6,7 +6,7 @@ import { useOutletContext } from "react-router-dom";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 
-const CartItem = lazy(() => import("./CartItem"));
+const CartItem = lazy(() => import("../../components/CartItem"));
 type OutletCtx = {
   setItemsNumber: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -42,7 +42,7 @@ export default function Cart() {
   if (loading) {
     return (
       <Box sx={{ width: "100%" }}>
-        <LinearProgress color="inherit" />
+        <LinearProgress color="primary" />
       </Box>
     );
   }
