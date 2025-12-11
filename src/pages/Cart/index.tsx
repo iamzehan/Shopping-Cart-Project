@@ -5,7 +5,7 @@ import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantity
 import { useOutletContext } from "react-router-dom";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
-
+import Container from "@mui/material/Container";
 const CartItem = lazy(() => import("../../components/CartItem"));
 type OutletCtx = {
   setItemsNumber: React.Dispatch<React.SetStateAction<number>>;
@@ -63,22 +63,24 @@ export default function Cart() {
       </p>
       <div className="flex flex-col items-center w-full">
         {" "}
-        <table className="*:not-first:shadow *:not-first:border-b *:border-gray-400/20">
-          <tr className="text-center h-10">
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-          </tr>
-          {data?.map((product) => (
-            <Suspense fallback={<SkeletonLoad />}>
-              <CartItem
-                key={product.id}
-                data={product}
-                handleDelete={handleDelete}
-              />
-            </Suspense>
-          ))}
-        </table>
+        <Container>
+          <table className="*:not-first:shadow *:not-first:border-b *:border-gray-400/20">
+            <tr className="text-center h-10">
+              <th className="w-[60%]">Product</th>
+              <th className="w-[20%] md:w-[20%] mr-10">Price</th>
+              <th className="w-[20%]">Quantity</th>
+            </tr>
+            {data?.map((product) => (
+              <Suspense fallback={<SkeletonLoad />}>
+                <CartItem
+                  key={product.id}
+                  data={product}
+                  handleDelete={handleDelete}
+                />
+              </Suspense>
+            ))}
+          </table>
+        </Container>
       </div>
     </div>
   );
@@ -87,16 +89,18 @@ export default function Cart() {
 function SkeletonLoad() {
   return (
     <tr className="text-center text-2xl *:h-20">
-      <td className="p-5 w-[80%] bg-gray-500/20 animate-pulse">
-        <div className="rounded empty:h-5 bg-gray-500/50 empty:w-full empty:md:w-[50%] p-2"></div>
+      <td className="p-5 w-[60%] bg-gray-500/20 animate-pulse">
+        <div className="flex w-full gap-2 *:flex-1">
+          <div className="rounded empty:h-5 bg-gray-500/50 p-2"></div>
+        </div>
       </td>
-      <td className="bg-gray-500/20 animate-pulse">
-        <div className="rounded empty:h-5 bg-gray-500/50 empty:w-[90%] p-2"></div>
+      <td className="bg-gray-500/20 animate-pulse w-[10%]">
+        <div className="rounded empty:h-5 bg-gray-500/50 p-2"></div>
       </td>
-      <td className="bg-gray-500/20 animate-pulse align-middle">
-        <div className="rounded empty:h-5 bg-gray-500/50 ml-3 empty:w-[20%] p-2"></div>
+      <td className="bg-gray-500/20 animate-pulse align-middle w-[20%]">
+        <div className="rounded empty:h-5 bg-gray-500/50 ml-3  p-2"></div>
       </td>
-      <td className="bg-gray-500/20 animate-pulse px-5">
+      <td className="bg-gray-500/20 animate-pulse px-5 w-[10%]">
         <div className="rounded empty:h-5 bg-gray-500/50 mr-2 empty:w-[50%] p-2"></div>
       </td>
     </tr>
